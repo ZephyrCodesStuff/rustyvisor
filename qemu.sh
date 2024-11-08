@@ -1,0 +1,14 @@
+qemu-system-x86_64 \
+    -m 1024 \
+    -drive file=fat.img,format=raw,index=0,if=ide \
+    -boot order=d \
+    -bios /usr/share/ovmf/x64/OVMF.4m.fd \
+    -device VGA,vgamem_mb=16 -serial stdio \
+    -vga std \
+    -cpu host,-hypervisor,vmx=on \
+    -smp 1 \
+    -device isa-serial,chardev=ser0 \
+    -chardev socket,id=ser0,port=14449,host=localhost,server=on,wait=off \
+    -machine q35 \
+    -display none \
+    -enable-kvm

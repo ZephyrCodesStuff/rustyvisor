@@ -56,8 +56,12 @@ pub fn read_dr7() -> u64 {
 /// Returns true if the Intel vmx extensions are available and a hypervisor is not present, false otherwise.
 fn vmx_available() -> bool {
     let result = unsafe { core::arch::x86_64::__cpuid(CPUIDLeaf::ProcessorInfoAndFeatures as u32) };
-    result.ecx & (CPUIDLeafProcessorInfoAndFeaturesECXBits::VMXAvailable as u32) != 0
-        && result.ecx & (CPUIDLeafProcessorInfoAndFeaturesECXBits::HypervisorPresent as u32) == 0
+    let vmx_available = result.ecx & (CPUIDLeafProcessorInfoAndFeaturesECXBits::VMXAvailable as u32) != 0;
+    let hypervisor_present = result.ecx & (CPUIDLeafProcessorInfoAndFeaturesECXBits::HypervisorPresent as u32) != 0;
+
+    trace!("vmx_available: {}, hypervisor_present: {}", vmx_available, hypervisor_present);
+
+    vmx_available && !hypervisor_present
 }
 
 /// Gets the current VMCS revision identifier.

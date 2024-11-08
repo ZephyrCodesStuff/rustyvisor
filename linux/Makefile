@@ -6,7 +6,7 @@ PWD := $(shell pwd)
 
 
 RUST_RELEASE := debug
-RUST_TARGET := x86_64-unknown-none-linuxkernel
+RUST_TARGET := x86_64-unknown-none
 RUST_LIB_NAME := linux
 RUST_LIB_PATH := ../target/$(RUST_TARGET)/$(RUST_RELEASE)/lib$(RUST_LIB_NAME).a
 RUST_FILES := src/*.rs

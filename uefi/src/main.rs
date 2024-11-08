@@ -22,7 +22,6 @@
 
 #![no_std]
 #![no_main]
-#![feature(abi_efiapi)]
 #![warn(missing_docs)]
 
 extern crate hypervisor;

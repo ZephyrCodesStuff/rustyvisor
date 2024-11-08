@@ -13,7 +13,7 @@ if [ "$1" = "clean" ] ; then
     cd ..
 
     cd linux || exit 255
-    # make clean
+    make clean
     cd ..
 
     exit 0
@@ -28,5 +28,5 @@ cargo build
 cd ..
 
 cd linux || exit 255
-# make
+make
 cd ..

@@ -1,5 +1,4 @@
 #![no_std]
-#![feature(asm)]
 #![feature(lang_items)]
 #![allow(unknown_lints)]
 #![warn(missing_docs)]
