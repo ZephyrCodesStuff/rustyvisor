@@ -2,7 +2,7 @@
 use ::log::{error, info, trace};
 use x86;
 
-use core::{mem, ptr};
+use core::{mem, ptr, arch::asm};
 
 use crate::msr::{rdmsr, rdmsrl, wrmsr, Msr};
 use crate::vmcs_fields::VmcsField;

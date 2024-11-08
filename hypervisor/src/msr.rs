@@ -6,6 +6,9 @@
 //! machine.
 
 /// The values of various Model Specific Registers.
+
+use core::arch::asm;
+
 #[allow(dead_code)]
 #[derive(Debug, Copy, Clone)]
 #[repr(u32)]

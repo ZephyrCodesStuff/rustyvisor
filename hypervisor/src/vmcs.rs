@@ -140,7 +140,7 @@ pub fn initialize_guest_state(_vcpu: &VCpu) -> Result<(), x86::vmx::VmFail> {
     )?;
     vmwrite(VmcsField::GuestSsBase, ss_unpacked.base)?;
 
-    let tr = x86::task::tr();
+    let tr = unsafe { x86::task::tr() };
     let tr_unpacked = unpack_gdt_entry(gdt, tr.bits());
     vmwrite(VmcsField::GuestTrSelector, u64::from(tr_unpacked.selector))?;
     vmwrite(VmcsField::GuestTrLimit, tr_unpacked.limit)?;

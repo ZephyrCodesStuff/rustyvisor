@@ -12,5 +12,5 @@ use x86::bits64::segmentation::fs_deref;
 /// the first pointer of the fs base region, that is fs:0, we get a pointer to
 /// the current VCpu.
 pub fn get_current_vcpu() -> &'static mut VCpu {
-    unsafe { &mut *(fs_deref() as *mut VCpu) }
+    unsafe { &mut *(fs_deref!(0) as *mut VCpu) }
 }

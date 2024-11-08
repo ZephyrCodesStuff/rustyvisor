@@ -5,15 +5,15 @@ set -e
 
 if [ "$1" = "clean" ] ; then
     cd uefi || exit 255
-    cargo clean
+    # cargo clean
     cd ..
 
     cd rustyvctl || exit 255
-    cargo clean
+    # cargo clean
     cd ..
 
     cd linux || exit 255
-    make clean
+    # make clean
     cd ..
 
     exit 0
@@ -28,5 +28,5 @@ cargo build
 cd ..
 
 cd linux || exit 255
-make
+# make
 cd ..
